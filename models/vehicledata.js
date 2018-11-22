@@ -33,7 +33,7 @@ const vehicleDataScheme = new Mongoose.Schema({
 //Method to generate token
 
 //Create a class
-const VehicelData = mongoose.model('VehicleData', vehicleDataScheme);
+const VehicelData = Mongoose.model('VehicleData', vehicleDataScheme);
 
 function validateVehicleData(vehicleData) {
     const schema = {
