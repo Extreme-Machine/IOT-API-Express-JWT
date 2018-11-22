@@ -13,7 +13,7 @@ const vehicles = require('./routes/vehicles')
 
 
 //MongoDB connection
-Mongoose.connect('mongodb://localhost/RTVTSv01')
+Mongoose.connect('mongodb://localhost/RTVTSv01', { useNewUrlParser: true })
     .then( () => console.log('Connected to database...'))
     .catch(err => console.error('Error in connection', err));
 

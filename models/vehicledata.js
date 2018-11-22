@@ -37,12 +37,12 @@ const VehicelData = Mongoose.model('VehicleData', vehicleDataScheme);
 
 function validateVehicleData(vehicleData) {
     const schema = {
-        vehicelName: Joi.string().min(3).max(50).required(),
-        vehicelNumber: Joi.string().min(5).max(20).required(),
-        vehicelType: Joi.string().min(3).max(50).required(),
+        vehicleName: Joi.string().min(3).max(50).required(),
+        vehicleNumber: Joi.string().min(5).max(20).required(),
+        vehicleType: Joi.string().min(3).max(50).required(),
     };
     return Joi.validate(vehicleData, schema);
 }
 
-exports.VehicelData = VehicelData;
+exports.VehicleData = VehicelData;
 exports.validate = validateVehicleData;
