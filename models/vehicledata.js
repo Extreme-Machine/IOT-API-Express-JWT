@@ -25,12 +25,15 @@ const vehicleDataScheme = new Mongoose.Schema({
     },
     API_KEY: {
         type: String,
-        required: true,
         maxlength: 1024
     }
 });
 
 //Method to generate token
+vehicleDataScheme.methods.generateAuthToken = function() {
+    const token = jwt.sign({_id : this._id}, config.get('SECRET_KEY'));
+    return token;
+}
 
 //Create a class
 const VehicelData = Mongoose.model('VehicleData', vehicleDataScheme);

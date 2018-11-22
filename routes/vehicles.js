@@ -20,9 +20,13 @@ router.post('/', async (req,res) => {
        vehicleName: req.body.vehicleName,
        vehicleNumber: req.body.vehicleNumber,
        vehicleType: req.body.vehicleType,
-       API_KEY: "test"
+       API_KEY: ""
     });
-
+    
+    await vehicleData.save();
+    const token = vehicleData.generateAuthToken();
+    vehicleData = await VehicleData.findOneAndUpdate({vehicleNumber: req.body.vehicleNumber}, { API_KEY: token}, () => {});
+    
     res.send(vehicleData);
 });
 
