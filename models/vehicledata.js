@@ -30,7 +30,19 @@ const vehicleDataScheme = new Mongoose.Schema({
     }
 });
 
+//Method to generate token
 
+//Create a class
+const VehicelData = mongoose.model('VehicleData', vehicleDataScheme);
 
+function validateVehicleData(vehicleData) {
+    const schema = {
+        vehicelName: Joi.string().min(3).max(50).required(),
+        vehicelNumber: Joi.string().min(5).max(20).required(),
+        vehicelType: Joi.string().min(3).max(50).required(),
+    };
+    return Joi.validate(vehicleData, schema);
+}
 
-//Vehicle name, no, description/type, API_KEY 
+exports.VehicelData = VehicelData;
+exports.validate = validateVehicleData;
