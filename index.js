@@ -7,7 +7,7 @@ const Joi = require('joi');
 const config = require('config');
 
 //Required Routes
-
+const vehicles = require('./routes/vehicles')
 
 //JWT Check
 
@@ -19,6 +19,7 @@ Mongoose.connect('mongodb://localhost/RTVTSv01')
 
 //Express setup
 app.use(Express.json());
+app.use('/api/vehicles', vehicles);
 
 //Check if port is set in environment variable else set it to 3000
 const port = process.env.PORT || 3000;
