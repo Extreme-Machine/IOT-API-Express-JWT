@@ -16,8 +16,11 @@ if (!config.get('SECRET_KEY')) {
     process.exit(1);
 }
 
+const DB_URL_1 = 'mongodb://admin:password1234@ds115154.mlab.com:15154/rtvtsv01';
+const DB_URL_2 = 'mongodb://localhost/RTVTSv01';
+
 //MongoDB connection
-Mongoose.connect('mongodb://localhost/RTVTSv01', { useNewUrlParser: true })
+Mongoose.connect(DB_URL_1, { useNewUrlParser: true })
     .then( () => console.log('Connected to database...'))
     .catch(err => console.error('Error in connection', err));
 
