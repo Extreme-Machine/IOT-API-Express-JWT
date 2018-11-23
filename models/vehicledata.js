@@ -31,7 +31,7 @@ const vehicleDataScheme = new Mongoose.Schema({
 
 //Method to generate token
 vehicleDataScheme.methods.generateAuthToken = function() {
-    const token = jwt.sign({_id : this._id}, config.get('SECRET_KEY'));
+    const token = jwt.sign({_id : this._id, vehicleName: this.vehicleName, vehicleNumber: this.vehicleNumber }, config.get('SECRET_KEY'));
     return token;
 }
 
