@@ -16,7 +16,7 @@ if (!config.get('SECRET_KEY')) {
     process.exit(1);
 }
 
-const DB_URL_1 = 'mongodb://admin:password1234@ds115154.mlab.com:15154/rtvtsv01';
+const DB_URL_1 = config.get('DB_URL');
 const DB_URL_2 = 'mongodb://localhost/RTVTSv01';
 
 //MongoDB connection
