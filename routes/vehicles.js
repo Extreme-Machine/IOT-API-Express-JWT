@@ -16,6 +16,7 @@ router.post('/', async (req,res) => {
     let vehicleData = await VehicleData.findOne({ vehicleNumber : req.body.vehicleNumber });
     if(vehicleData) return res.status(400).send('Vehicle already exists.');
     
+    /*
     vehicleData = new VehicleData({
        vehicleName: req.body.vehicleName,
        vehicleNumber: req.body.vehicleNumber,
@@ -28,6 +29,21 @@ router.post('/', async (req,res) => {
     vehicleData = await VehicleData.findOneAndUpdate({vehicleNumber: req.body.vehicleNumber}, { API_KEY: token}, () => {});
     
     res.send(vehicleData);
+    */
+
+    vehicleData = new VehicleData({
+        vehicleName: req.body.vehicleName,
+        vehicleNumber: req.body.vehicleNumber,
+        vehicleType: req.body.vehicleType,
+    });
+
+    //Generate API Key for specific vehicle
+    const token = vehicleData.generateAuthTokenTest();
+    vehicleData.API_KEY  = token;
+
+    await vehicleData.save();
+    res.send(vehicleData);
+
 });
 
 module.exports = router;

@@ -35,6 +35,11 @@ vehicleDataScheme.methods.generateAuthToken = function() {
     return token;
 }
 
+vehicleDataScheme.methods.generateAuthTokenTest = function() {
+    const token = jwt.sign({vehicleName: this.vehicleName, vehicleNumber: this.vehicleNumber }, config.get('SECRET_KEY'));
+    return token;
+}
+
 //Create a class
 const VehicelData = Mongoose.model('VehicleData', vehicleDataScheme);
 
