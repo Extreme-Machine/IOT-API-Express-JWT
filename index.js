@@ -9,6 +9,7 @@ const config = require('config');
 //Required Routes
 const vehicles = require('./routes/vehicles');
 const realtime = require('./routes/realtime');
+const alerts = require('./routes/alerts');
 
 //JWT Check
 if (!config.get('SECRET_KEY')) {
@@ -28,6 +29,7 @@ Mongoose.connect(DB_URL_1, { useNewUrlParser: true })
 app.use(Express.json());
 app.use('/api/vehicles', vehicles);
 app.use('/api/realtime', realtime);
+app.use('/api/alerts', alerts);
 
 //Check if port is set in environment variable else set it to 3000
 const port = process.env.PORT || 3000;
